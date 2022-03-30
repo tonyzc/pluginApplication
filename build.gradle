@@ -1,0 +1,42 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.example.fzc-asm-plugin'//插件工程里resources/META-INF/gradle-plugins 下的 properties 文件名称
+
+buildscript {
+    ext.kotlin_version = '1.3.10'
+    repositories {
+        maven{ url uri("./repos")} // repos 为本地的地址，后续需要修改为发布的 maven 库地址
+        google()
+        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+
+    }
+    dependencies {
+        //所添加依赖的插件名字和版本号
+
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        //使用本地buildSrc，无需依赖
+
+//         classpath 'com.example.plugin:AsmPlugin:1.0.2'
+        
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

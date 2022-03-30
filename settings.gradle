@@ -1,0 +1,3 @@
+//include ':app',':buildSrc', ':compiler', ':annotation', ':testlib', ':javalib'
+include ':app', ':compiler', ':annotation', ':testlib', ':javalib'
+rootProject.name='PluginApplication'

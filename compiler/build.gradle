@@ -1,0 +1,19 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation project(':annotation')
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    //gradle 5.0会忽略annotationProcessor,因此需要手动添加
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+    implementation 'com.squareup:javawriter:2.5.1' //JavaWriter就是一个工具类, 使用起来简单容易理解, 但是要手动拼接源文件中的语句, 因此容易出出现拼写错误
+    implementation 'com.squareup:javapoet:1.10.0' //javapoet对java源文件进行了建模. 结构化java源文件后, 用户使用时必须使用library提供的数据结构, 代码的拼接生成由库处理, 因此不会产生拼写错误, 使用起来也比较方便
+
+
+}
